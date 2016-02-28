@@ -32,12 +32,11 @@ def GetNumberOfWeightReadingsToday():
     # Do something with the response
     return len(response['weight'])
 
-if __name__ == "__main__":
-    while GetNumberOfWeightReadingsToday() < 1:
-        # kill omxplayer playing music
-        p = subprocess.Popen(['ps', '-A'], stdout=subprocess.PIPE)
-        out, err = p.communicate()
-        for line in out.splitlines():
-            if 'omxplayer' in line:
-                pid = int(line.split(None, 1)[0])
-                os.kill(pid, signal.SIGKILL)
+while GetNumberOfWeightReadingsToday() < 1:
+    # kill omxplayer playing music
+    p = subprocess.Popen(['ps', '-A'], stdout=subprocess.PIPE)
+    out, err = p.communicate()
+    for line in out.splitlines():
+        if 'omxplayer' in line:
+            pid = int(line.split(None, 1)[0])
+            os.kill(pid, signal.SIGKILL)
