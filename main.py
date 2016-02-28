@@ -17,7 +17,7 @@ def GetNumberOfWeightReadingsToday():
         # Use the temporary access code to obtain a more permanent pair of tokens
         token = z.GetAccessToken(access_code)
         # Save the token to a file
-        os.environ['FITBIT_TOKEN'] = json.dump(token)
+        json.dump(os.environ['FITBIT_TOKEN'])
 
     # Sample API call
     url = '/1/user/-/body/log/weight/date/{}.json'.format(date.today().strftime('%Y-%m-%d'))
