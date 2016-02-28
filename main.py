@@ -26,7 +26,7 @@ def GetNumberOfWeightReadingsToday():
     # Token is part of the response. Note that the token pair can change when a refresh is necessary.
     # So we replace the current token with the response one and save it.
     token = response['token']
-    json.dump(token, open(tokenfile,'w'))
+    os.environ['FITBIT_TOKEN'] = json.dump(token)
 
     # Do something with the response
     return len(response['weight'])
