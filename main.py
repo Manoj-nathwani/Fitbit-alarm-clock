@@ -7,7 +7,7 @@ def GetNumberOfWeightReadingsToday():
     # Try to read existing token pair
     try:
         token = json.load(os.environ['FITBIT_TOKEN'])
-    except IOError:
+    except:
         # If not generate a new file
         # Get the authorization URL for user to complete in browser.
         auth_url = z.GetAuthorizationUri()
