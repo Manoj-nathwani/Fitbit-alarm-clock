@@ -4,9 +4,9 @@ import os, base64, requests, urllib
 class Fitbit():
 
     # All information must be as on the https://dev.fitbit.com/apps page.
-    FITBIT_CLIENT_ID     = os.environ['FITBIT_CLIENT_ID']
-    FITBIT_CLIENT_SECRET = os.environ['FITBIT_CLIENT_SECRET']
-    FITBIT_REDIRECT_URI  = os.environ['FITBIT_REDIRECT_URI']
+    CLIENT_ID     = os.environ['FITBIT_CLIENT_ID']
+    CLIENT_SECRET = os.environ['FITBIT_CLIENT_SECRET']
+    REDIRECT_URI  = os.environ['FITBIT_REDIRECT_URI']
 
     # Decide which information the FitBit.py should have access to.
     # Options: 'activity', 'heartrate', 'location', 'nutrition',
