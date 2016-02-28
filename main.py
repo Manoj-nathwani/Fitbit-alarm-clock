@@ -1,13 +1,12 @@
-import fitbit, json, subprocess, signal
+import fitbit, os, json, subprocess, signal
 from datetime import date
 
-tokenfile = "user_settings.txt"
 z = fitbit.Fitbit();
 
 def GetNumberOfWeightReadingsToday():
     # Try to read existing token pair
     try:
-        token = json.load(open(tokenfile))
+        token = json.load(os.environ['FITBIT_TOKEN'])
     except IOError:
         # If not generate a new file
         # Get the authorization URL for user to complete in browser.
@@ -18,7 +17,7 @@ def GetNumberOfWeightReadingsToday():
         # Use the temporary access code to obtain a more permanent pair of tokens
         token = z.GetAccessToken(access_code)
         # Save the token to a file
-        json.dump(token, open(tokenfile,'w'))
+        os.environ['FITBIT_TOKEN'] = json.dump(token)
 
     # Sample API call
     url = '/1/user/-/body/log/weight/date/{}.json'.format(date.today().strftime('%Y-%m-%d'))
